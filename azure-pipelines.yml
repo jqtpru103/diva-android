@@ -10,10 +10,14 @@ pool:
   vmImage: 'macOS-latest'
 
 steps:
+
+- script:'ls -l gradlew'
+  displayName: 'Run a one-line script'
+
 - task: Gradle@2
   inputs:
-    workingDirectory: '$(system.defaultWorkingDirectory)/AndroidApps/MyApp'
-    gradleWrapperFile: '$(system.defaultWorkingDirectory)/AndroidApps/gradlew'
+    workingDirectory: '$(system.defaultWorkingDirectory)/MyApp'
+    gradleWrapperFile: '$(system.defaultWorkingDirectory)gradlew'
     gradleOptions: '-Xmx3072m'
     javaHomeOption: 'JDKVersion'
     jdkVersionOption: '1.8'
@@ -22,8 +26,7 @@ steps:
     testResultsFiles: '**/TEST-*.xml'
   displayName: gradlew assembleDebug test
 
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+
 
 - script: |
     echo Add other tasks to build, test, and deploy your project.
