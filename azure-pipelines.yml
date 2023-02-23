@@ -11,9 +11,6 @@ pool:
 
 steps:
 
-- script:'ls -l gradlew'
-  displayName: 'Run a one-line script'
-
 - task: Gradle@2
   inputs:
     workingDirectory: '$(system.defaultWorkingDirectory)/MyApp'
@@ -26,7 +23,7 @@ steps:
     testResultsFiles: '**/TEST-*.xml'
   displayName: gradlew assembleDebug test
 
-
+- script: 'ls -l gradlew'
 
 - script: |
     echo Add other tasks to build, test, and deploy your project.
