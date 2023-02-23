@@ -20,7 +20,6 @@ steps:
     jdkArchitectureOption: 'x64'
     publishJUnitResults: false
     testResultsFiles: '**/TEST-*.xml'
-    tasks: 'assembleRelease'
   displayName: gradlew assembleDebug test
 
 - script: echo Hello, world!
