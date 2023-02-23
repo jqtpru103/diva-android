@@ -7,9 +7,23 @@ trigger:
 - master
 
 pool:
-  vmImage: 'macOS-11'
+  vmImage: 'macOS-latest'
 
 steps:
+- task: UseJavaVersion@1
+  inputs:
+    versionSpec: '8'
+    architecture: 'x64'
+- script: |
+    brew tap homebrew/cask-versions
+    brew install --scask adoptopenjdk8
+    brew install android-sdk
+    export Android_HOME=/us/r/local/share/android-sdk
+    export PATH=$ANDRIOD_HOME/tools:$PATH
+    export PATH=$ANDRIOD_HOME/platform-tools:$PATH
+    yes | sdkmanager --licenses
+    sdkmanager "platform;android-23"
+  displayName: 'Set an ADR EnV'
 
 - task: Gradle@2
   inputs:
